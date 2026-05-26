@@ -34,3 +34,7 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Cached Algolia movies dataset. Re-downloaded by scripts/provision.ts.
+# 90+ MB; do not commit.
+/data/movies.json
