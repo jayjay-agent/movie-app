@@ -498,25 +498,19 @@
     --chat-panel-width: 440px;
     --chat-panel-width-maximized: 640px;
     --chat-message-max-width: 36ch;
+    /* Consumed by ChatSidePanelLayout — it inline-sets body.marginRight to
+       this value when open, restores on close. */
+    --ais-chat-width: var(--chat-panel-width);
 }
 
-/* ----- Layout push --------------------------------------------------------
-   When the side panel is open, reserve right-side gutter on the body so the
-   centered /search grid doesn't fall behind the panel. The transition makes
-   the open/close feel architectural rather than overlaid. */
+/* Transition the inline margin the widget writes to body so the push feels
+   architectural rather than instant. */
 body {
-    transition: padding-right 240ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-body:has(.ais-ChatSidePanelLayout) {
-    padding-right: var(--chat-panel-width);
-}
-body:has(.ais-ChatSidePanelLayout--maximized) {
-    padding-right: var(--chat-panel-width-maximized);
+    transition: margin-right 240ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media (max-width: 960px) {
-    body:has(.ais-ChatSidePanelLayout),
-    body:has(.ais-ChatSidePanelLayout--maximized) {
-        padding-right: 0;
+    :root {
+        --ais-chat-width: 0px;
     }
 }
 
@@ -589,8 +583,10 @@ body:has(.ais-ChatSidePanelLayout--maximized) {
 }
 
 /* ----- Side panel container -----------------------------------------------
-   Fixed to the right edge. Slides in via translateX. Border + shadow form
-   the architectural spine separating it from the content. */
+   The widget mounts the layout root ALWAYS — open/closed is signalled by the
+   --open modifier on the inner .ais-Chat-container. So we keep the root
+   permanently in DOM but slide+fade it offscreen when closed, and ride the
+   widget's own state class via :has() to decide which it is. */
 .ais-ChatSidePanelLayout {
     position: fixed;
     inset: 0 0 0 auto;
@@ -604,7 +600,27 @@ body:has(.ais-ChatSidePanelLayout--maximized) {
         -24px 0 60px -24px color-mix(in oklab, var(--foreground) 30%, transparent);
     display: flex;
     flex-direction: column;
-    animation: chatSlideIn 280ms cubic-bezier(0.32, 0.72, 0, 1);
+    /* Closed state */
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition:
+        transform 280ms cubic-bezier(0.32, 0.72, 0, 1),
+        opacity 200ms ease,
+        visibility 0s linear 280ms,
+        width 240ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+.ais-ChatSidePanelLayout:has(.ais-Chat-container--open) {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transition:
+        transform 280ms cubic-bezier(0.32, 0.72, 0, 1),
+        opacity 200ms ease,
+        visibility 0s linear 0s,
+        width 240ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 .ais-ChatSidePanelLayout--maximized {
     width: var(--chat-panel-width-maximized);
@@ -616,15 +632,14 @@ body:has(.ais-ChatSidePanelLayout--maximized) {
     }
 }
 
-@keyframes chatSlideIn {
-    from {
-        transform: translateX(8%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+/* The widget renders the chrome (header/messages/prompt) inside this
+   container regardless of open state — hide it when closed so it doesn't
+   keyboard-trap or get tabbed into. */
+.ais-Chat-container {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ----- Header ------------------------------------------------------------- */
