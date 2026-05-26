@@ -58,22 +58,5 @@
       }
     },
     "enabled": true
-  },
-  {
-    "objectID": "rule-context-weekend",
-    "description": "Boost family-friendly movies when the 'weekend' context is active",
-    "conditions": [
-      {
-        "context": "weekend",
-        "anchoring": "contains",
-        "pattern": ""
-      }
-    ],
-    "consequence": {
-      "params": {
-        "optionalFilters": ["genre:Family<score=2>", "genre:Animation<score=2>"]
-      }
-    },
-    "enabled": true
   }
 ]
