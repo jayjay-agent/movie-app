@@ -1,0 +1,492 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Movie App owned" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: Movie App
+        - generic [ref=e7]: owned
+      - navigation [ref=e8]:
+        - link "Home" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Search" [ref=e10] [cursor=pointer]:
+          - /url: /search
+        - link "Agent" [ref=e11] [cursor=pointer]:
+          - /url: /agent
+        - link "Analytics" [ref=e12] [cursor=pointer]:
+          - /url: /analytics
+  - main [ref=e13]:
+    - generic [ref=e14]:
+      - complementary [ref=e15]:
+        - generic [ref=e16]:
+          - heading "Genre" [level=3] [ref=e17]
+          - generic [ref=e19]:
+            - list [ref=e20]:
+              - listitem [ref=e21]:
+                - generic [ref=e22] [cursor=pointer]:
+                  - checkbox "Drama 35571" [ref=e23]
+                  - generic [ref=e24]: Drama
+                  - generic [ref=e25]: "35571"
+              - listitem [ref=e26]:
+                - generic [ref=e27] [cursor=pointer]:
+                  - checkbox "Comedy 24204" [ref=e28]
+                  - generic [ref=e29]: Comedy
+                  - generic [ref=e30]: "24204"
+              - listitem [ref=e31]:
+                - generic [ref=e32] [cursor=pointer]:
+                  - checkbox "Action 13264" [ref=e33]
+                  - generic [ref=e34]: Action
+                  - generic [ref=e35]: "13264"
+              - listitem [ref=e36]:
+                - generic [ref=e37] [cursor=pointer]:
+                  - checkbox "Thriller 12318" [ref=e38]
+                  - generic [ref=e39]: Thriller
+                  - generic [ref=e40]: "12318"
+              - listitem [ref=e41]:
+                - generic [ref=e42] [cursor=pointer]:
+                  - checkbox "Documentary 12266" [ref=e43]
+                  - generic [ref=e44]: Documentary
+                  - generic [ref=e45]: "12266"
+              - listitem [ref=e46]:
+                - generic [ref=e47] [cursor=pointer]:
+                  - checkbox "Romance 10486" [ref=e48]
+                  - generic [ref=e49]: Romance
+                  - generic [ref=e50]: "10486"
+              - listitem [ref=e51]:
+                - generic [ref=e52] [cursor=pointer]:
+                  - checkbox "Horror 9190" [ref=e53]
+                  - generic [ref=e54]: Horror
+                  - generic [ref=e55]: "9190"
+              - listitem [ref=e56]:
+                - generic [ref=e57] [cursor=pointer]:
+                  - checkbox "Foreign 7768" [ref=e58]
+                  - generic [ref=e59]: Foreign
+                  - generic [ref=e60]: "7768"
+            - button "Show more" [ref=e61] [cursor=pointer]
+        - generic [ref=e62]:
+          - heading "Year" [level=3] [ref=e63]
+          - generic [ref=e66]:
+            - spinbutton [ref=e68]
+            - generic [ref=e69]: to
+            - spinbutton [ref=e71]
+            - button "Go" [ref=e72] [cursor=pointer]
+        - generic [ref=e73]:
+          - heading "Actors" [level=3] [ref=e74]
+          - generic [ref=e76]:
+            - search [ref=e79]:
+              - searchbox "Search" [ref=e80]
+              - button "Submit the search query":
+                - img
+            - list [ref=e81]:
+              - listitem [ref=e82]:
+                - generic [ref=e83] [cursor=pointer]:
+                  - checkbox "Christopher Lee 188" [ref=e84]
+                  - generic [ref=e85]: Christopher Lee
+                  - generic [ref=e86]: "188"
+              - listitem [ref=e87]:
+                - generic [ref=e88] [cursor=pointer]:
+                  - checkbox "Mel Blanc 175" [ref=e89]
+                  - generic [ref=e90]: Mel Blanc
+                  - generic [ref=e91]: "175"
+              - listitem [ref=e92]:
+                - generic [ref=e93] [cursor=pointer]:
+                  - checkbox "Brahmanandam 170" [ref=e94]
+                  - generic [ref=e95]: Brahmanandam
+                  - generic [ref=e96]: "170"
+              - listitem [ref=e97]:
+                - generic [ref=e98] [cursor=pointer]:
+                  - checkbox "Nasser 161" [ref=e99]
+                  - generic [ref=e100]: Nasser
+                  - generic [ref=e101]: "161"
+              - listitem [ref=e102]:
+                - generic [ref=e103] [cursor=pointer]:
+                  - checkbox "Eric Roberts 156" [ref=e104]
+                  - generic [ref=e105]: Eric Roberts
+                  - generic [ref=e106]: "156"
+              - listitem [ref=e107]:
+                - generic [ref=e108] [cursor=pointer]:
+                  - checkbox "Prakash Raj 150" [ref=e109]
+                  - generic [ref=e110]: Prakash Raj
+                  - generic [ref=e111]: "150"
+            - button "Show more" [ref=e112] [cursor=pointer]
+        - generic [ref=e113]:
+          - heading "Rating" [level=3] [ref=e114]
+          - generic [ref=e117]:
+            - spinbutton [ref=e119]
+            - generic [ref=e120]: to
+            - spinbutton [ref=e122]
+            - button "Go" [ref=e123] [cursor=pointer]
+        - button "Clear all filters" [disabled] [ref=e126]
+      - generic [ref=e127]:
+        - generic [ref=e128]:
+          - generic [ref=e129]:
+            - search [ref=e131]:
+              - searchbox "Search" [active] [ref=e132]
+            - generic [ref=e133]:
+              - generic [ref=e134]: 133,443 movies · 1ms
+              - generic [ref=e135]: ·
+              - generic [ref=e136]:
+                - generic [ref=e137]: Sort
+                - combobox "Sort results by" [ref=e139]:
+                  - option "Relevance" [selected]
+                  - option "Newest"
+                  - option "Top rated"
+              - button "Mode …" [disabled] [ref=e141]:
+                - generic [ref=e143]: Mode …
+          - generic:
+            - list
+        - list [ref=e145]:
+          - listitem [ref=e146]:
+            - link "The Shawshank Redemption The Shawshank Redemption 1994 Rating Drama Crime" [ref=e147] [cursor=pointer]:
+              - /url: /movie/439817390
+              - img "The Shawshank Redemption" [ref=e150]
+              - generic [ref=e151]:
+                - heading "The Shawshank Redemption" [level=3] [ref=e152]:
+                  - generic [ref=e153]: The Shawshank Redemption
+                - generic [ref=e154]:
+                  - generic [ref=e155]: "1994"
+                  - generic "Rating" [ref=e156]: ★ 5.0
+                - generic [ref=e157]:
+                  - generic [ref=e158]: Drama
+                  - generic [ref=e159]: Crime
+          - listitem [ref=e160]:
+            - link "Guardians of the Galaxy Guardians of the Galaxy 2014 Rating Science Fiction Fantasy Adventure" [ref=e161] [cursor=pointer]:
+              - /url: /movie/439486910
+              - img "Guardians of the Galaxy" [ref=e164]
+              - generic [ref=e165]:
+                - heading "Guardians of the Galaxy" [level=3] [ref=e166]:
+                  - generic [ref=e167]: Guardians of the Galaxy
+                - generic [ref=e168]:
+                  - generic [ref=e169]: "2014"
+                  - generic "Rating" [ref=e170]: ★ 5.0
+                - generic [ref=e171]:
+                  - generic [ref=e172]: Science Fiction
+                  - generic [ref=e173]: Fantasy
+                  - generic [ref=e174]: Adventure
+          - listitem [ref=e175]:
+            - link "The Godfather The Godfather 1972 Rating Drama Crime" [ref=e176] [cursor=pointer]:
+              - /url: /movie/439594920
+              - img "The Godfather" [ref=e179]
+              - generic [ref=e180]:
+                - heading "The Godfather" [level=3] [ref=e181]:
+                  - generic [ref=e182]: The Godfather
+                - generic [ref=e183]:
+                  - generic [ref=e184]: "1972"
+                  - generic "Rating" [ref=e185]: ★ 5.0
+                - generic [ref=e186]:
+                  - generic [ref=e187]: Drama
+                  - generic [ref=e188]: Crime
+          - listitem [ref=e189]:
+            - link "Interstellar Interstellar 2014 Rating Drama Science Fiction" [ref=e190] [cursor=pointer]:
+              - /url: /movie/440069670
+              - img "Interstellar" [ref=e193]
+              - generic [ref=e194]:
+                - heading "Interstellar" [level=3] [ref=e195]:
+                  - generic [ref=e196]: Interstellar
+                - generic [ref=e197]:
+                  - generic [ref=e198]: "2014"
+                  - generic "Rating" [ref=e199]: ★ 5.0
+                - generic [ref=e200]:
+                  - generic [ref=e201]: Drama
+                  - generic [ref=e202]: Science Fiction
+          - listitem [ref=e203]:
+            - link "The Intouchables The Intouchables 2011 Rating Drama Comedy" [ref=e204] [cursor=pointer]:
+              - /url: /movie/439828230
+              - img "The Intouchables" [ref=e207]
+              - generic [ref=e208]:
+                - heading "The Intouchables" [level=3] [ref=e209]:
+                  - generic [ref=e210]: The Intouchables
+                - generic [ref=e211]:
+                  - generic [ref=e212]: "2011"
+                  - generic "Rating" [ref=e213]: ★ 5.0
+                - generic [ref=e214]:
+                  - generic [ref=e215]: Drama
+                  - generic [ref=e216]: Comedy
+          - listitem [ref=e217]:
+            - link "The Imitation Game The Imitation Game 2014 Rating History Drama Thriller" [ref=e218] [cursor=pointer]:
+              - /url: /movie/439434880
+              - img "The Imitation Game" [ref=e221]
+              - generic [ref=e222]:
+                - heading "The Imitation Game" [level=3] [ref=e223]:
+                  - generic [ref=e224]: The Imitation Game
+                - generic [ref=e225]:
+                  - generic [ref=e226]: "2014"
+                  - generic "Rating" [ref=e227]: ★ 5.0
+                - generic [ref=e228]:
+                  - generic [ref=e229]: History
+                  - generic [ref=e230]: Drama
+                  - generic [ref=e231]: Thriller
+          - listitem [ref=e232]:
+            - link "The Fault in Our Stars The Fault in Our Stars 2014 Rating Romance Drama" [ref=e233] [cursor=pointer]:
+              - /url: /movie/439769080
+              - img "The Fault in Our Stars" [ref=e236]
+              - generic [ref=e237]:
+                - heading "The Fault in Our Stars" [level=3] [ref=e238]:
+                  - generic [ref=e239]: The Fault in Our Stars
+                - generic [ref=e240]:
+                  - generic [ref=e241]: "2014"
+                  - generic "Rating" [ref=e242]: ★ 5.0
+                - generic [ref=e243]:
+                  - generic [ref=e244]: Romance
+                  - generic [ref=e245]: Drama
+          - listitem [ref=e246]:
+            - link "Whiplash Whiplash 2014 Rating Drama" [ref=e247] [cursor=pointer]:
+              - /url: /movie/439484600
+              - img "Whiplash" [ref=e250]
+              - generic [ref=e251]:
+                - heading "Whiplash" [level=3] [ref=e252]:
+                  - generic [ref=e253]: Whiplash
+                - generic [ref=e254]:
+                  - generic [ref=e255]: "2014"
+                  - generic "Rating" [ref=e256]: ★ 5.0
+                - generic [ref=e258]: Drama
+          - listitem [ref=e259]:
+            - link "12 Angry Men 12 Angry Men 1957 Rating Drama" [ref=e260] [cursor=pointer]:
+              - /url: /movie/440146470
+              - img "12 Angry Men" [ref=e263]
+              - generic [ref=e264]:
+                - heading "12 Angry Men" [level=3] [ref=e265]:
+                  - generic [ref=e266]: 12 Angry Men
+                - generic [ref=e267]:
+                  - generic [ref=e268]: "1957"
+                  - generic "Rating" [ref=e269]: ★ 5.0
+                - generic [ref=e271]: Drama
+          - listitem [ref=e272]:
+            - 'link "Avengers: Age of Ultron Avengers: Age of Ultron 2015 Rating Action Adventure Science Fiction" [ref=e273] [cursor=pointer]':
+              - /url: /movie/439557350
+              - 'img "Avengers: Age of Ultron" [ref=e276]'
+              - generic [ref=e277]:
+                - 'heading "Avengers: Age of Ultron" [level=3] [ref=e278]':
+                  - generic [ref=e279]: "Avengers: Age of Ultron"
+                - generic [ref=e280]:
+                  - generic [ref=e281]: "2015"
+                  - generic "Rating" [ref=e282]: ★ 5.0
+                - generic [ref=e283]:
+                  - generic [ref=e284]: Action
+                  - generic [ref=e285]: Adventure
+                  - generic [ref=e286]: Science Fiction
+          - listitem [ref=e287]:
+            - link "Seven Samurai Seven Samurai 1954 Rating Action Drama" [ref=e288] [cursor=pointer]:
+              - /url: /movie/439464050
+              - img "Seven Samurai" [ref=e291]
+              - generic [ref=e292]:
+                - heading "Seven Samurai" [level=3] [ref=e293]:
+                  - generic [ref=e294]: Seven Samurai
+                - generic [ref=e295]:
+                  - generic [ref=e296]: "1954"
+                  - generic "Rating" [ref=e297]: ★ 5.0
+                - generic [ref=e298]:
+                  - generic [ref=e299]: Action
+                  - generic [ref=e300]: Drama
+          - listitem [ref=e301]:
+            - link "Presto Presto 2008 Rating Animation Adventure Comedy" [ref=e302] [cursor=pointer]:
+              - /url: /movie/440156000
+              - img "Presto" [ref=e305]
+              - generic [ref=e306]:
+                - heading "Presto" [level=3] [ref=e307]:
+                  - generic [ref=e308]: Presto
+                - generic [ref=e309]:
+                  - generic [ref=e310]: "2008"
+                  - generic "Rating" [ref=e311]: ★ 5.0
+                - generic [ref=e312]:
+                  - generic [ref=e313]: Animation
+                  - generic [ref=e314]: Adventure
+                  - generic [ref=e315]: Comedy
+          - listitem [ref=e316]:
+            - link "Paperman Paperman 2012 Rating Animation Romance Family" [ref=e317] [cursor=pointer]:
+              - /url: /movie/439444500
+              - img "Paperman" [ref=e320]
+              - generic [ref=e321]:
+                - heading "Paperman" [level=3] [ref=e322]:
+                  - generic [ref=e323]: Paperman
+                - generic [ref=e324]:
+                  - generic [ref=e325]: "2012"
+                  - generic "Rating" [ref=e326]: ★ 5.0
+                - generic [ref=e327]:
+                  - generic [ref=e328]: Animation
+                  - generic [ref=e329]: Romance
+                  - generic [ref=e330]: Family
+          - listitem [ref=e331]:
+            - link "La Haine La Haine 1995 Rating Drama" [ref=e332] [cursor=pointer]:
+              - /url: /movie/439733530
+              - img "La Haine" [ref=e335]
+              - generic [ref=e336]:
+                - heading "La Haine" [level=3] [ref=e337]:
+                  - generic [ref=e338]: La Haine
+                - generic [ref=e339]:
+                  - generic [ref=e340]: "1995"
+                  - generic "Rating" [ref=e341]: ★ 5.0
+                - generic [ref=e343]: Drama
+          - listitem [ref=e344]:
+            - link "Short Term 12 Short Term 12 2013 Rating Drama" [ref=e345] [cursor=pointer]:
+              - /url: /movie/439649240
+              - img "Short Term 12" [ref=e348]
+              - generic [ref=e349]:
+                - heading "Short Term 12" [level=3] [ref=e350]:
+                  - generic [ref=e351]: Short Term 12
+                - generic [ref=e352]:
+                  - generic [ref=e353]: "2013"
+                  - generic "Rating" [ref=e354]: ★ 5.0
+                - generic [ref=e356]: Drama
+          - listitem [ref=e357]:
+            - link "Citizenfour Citizenfour 2014 Rating Documentary" [ref=e358] [cursor=pointer]:
+              - /url: /movie/440595570
+              - img "Citizenfour" [ref=e361]
+              - generic [ref=e362]:
+                - heading "Citizenfour" [level=3] [ref=e363]:
+                  - generic [ref=e364]: Citizenfour
+                - generic [ref=e365]:
+                  - generic [ref=e366]: "2014"
+                  - generic "Rating" [ref=e367]: ★ 5.0
+                - generic [ref=e369]: Documentary
+          - listitem [ref=e370]:
+            - link "Mommy Mommy 2014 Rating Drama" [ref=e371] [cursor=pointer]:
+              - /url: /movie/439600910
+              - img "Mommy" [ref=e374]
+              - generic [ref=e375]:
+                - heading "Mommy" [level=3] [ref=e376]:
+                  - generic [ref=e377]: Mommy
+                - generic [ref=e378]:
+                  - generic [ref=e379]: "2014"
+                  - generic "Rating" [ref=e380]: ★ 5.0
+                - generic [ref=e382]: Drama
+          - listitem [ref=e383]:
+            - link "Ex Machina Ex Machina 2015 Rating Drama Science Fiction" [ref=e384] [cursor=pointer]:
+              - /url: /movie/439935120
+              - img "Ex Machina" [ref=e387]
+              - generic [ref=e388]:
+                - heading "Ex Machina" [level=3] [ref=e389]:
+                  - generic [ref=e390]: Ex Machina
+                - generic [ref=e391]:
+                  - generic [ref=e392]: "2015"
+                  - generic "Rating" [ref=e393]: ★ 5.0
+                - generic [ref=e394]:
+                  - generic [ref=e395]: Drama
+                  - generic [ref=e396]: Science Fiction
+          - listitem [ref=e397]:
+            - link "8½ 8½ 1963 Rating Fantasy Drama" [ref=e398] [cursor=pointer]:
+              - /url: /movie/439821890
+              - img "8½" [ref=e401]
+              - generic [ref=e402]:
+                - heading "8½" [level=3] [ref=e403]:
+                  - generic [ref=e404]: 8½
+                - generic [ref=e405]:
+                  - generic [ref=e406]: "1963"
+                  - generic "Rating" [ref=e407]: ★ 5.0
+                - generic [ref=e408]:
+                  - generic [ref=e409]: Fantasy
+                  - generic [ref=e410]: Drama
+          - listitem [ref=e411]:
+            - link "Feast Feast 2014 Rating Romance Comedy Animation" [ref=e412] [cursor=pointer]:
+              - /url: /movie/439938580
+              - img "Feast" [ref=e415]
+              - generic [ref=e416]:
+                - heading "Feast" [level=3] [ref=e417]:
+                  - generic [ref=e418]: Feast
+                - generic [ref=e419]:
+                  - generic [ref=e420]: "2014"
+                  - generic "Rating" [ref=e421]: ★ 5.0
+                - generic [ref=e422]:
+                  - generic [ref=e423]: Romance
+                  - generic [ref=e424]: Comedy
+                  - generic [ref=e425]: Animation
+          - listitem [ref=e426]:
+            - link "Wolf Children Wolf Children 2012 Rating Animation Fantasy Family" [ref=e427] [cursor=pointer]:
+              - /url: /movie/440391730
+              - img "Wolf Children" [ref=e430]
+              - generic [ref=e431]:
+                - heading "Wolf Children" [level=3] [ref=e432]:
+                  - generic [ref=e433]: Wolf Children
+                - generic [ref=e434]:
+                  - generic [ref=e435]: "2012"
+                  - generic "Rating" [ref=e436]: ★ 5.0
+                - generic [ref=e437]:
+                  - generic [ref=e438]: Animation
+                  - generic [ref=e439]: Fantasy
+                  - generic [ref=e440]: Family
+          - listitem [ref=e441]:
+            - link "The Tale of the Princess Kaguya The Tale of the Princess Kaguya 2013 Rating Fantasy Animation Drama" [ref=e442] [cursor=pointer]:
+              - /url: /movie/440012620
+              - img "The Tale of the Princess Kaguya" [ref=e445]
+              - generic [ref=e446]:
+                - heading "The Tale of the Princess Kaguya" [level=3] [ref=e447]:
+                  - generic [ref=e448]: The Tale of the Princess Kaguya
+                - generic [ref=e449]:
+                  - generic [ref=e450]: "2013"
+                  - generic "Rating" [ref=e451]: ★ 5.0
+                - generic [ref=e452]:
+                  - generic [ref=e453]: Fantasy
+                  - generic [ref=e454]: Animation
+                  - generic [ref=e455]: Drama
+          - listitem [ref=e456]:
+            - 'link "One Direction: This Is Us One Direction: This Is Us 2013 Rating Documentary Music" [ref=e457] [cursor=pointer]':
+              - /url: /movie/439721100
+              - 'img "One Direction: This Is Us" [ref=e460]'
+              - generic [ref=e461]:
+                - 'heading "One Direction: This Is Us" [level=3] [ref=e462]':
+                  - generic [ref=e463]: "One Direction: This Is Us"
+                - generic [ref=e464]:
+                  - generic [ref=e465]: "2013"
+                  - generic "Rating" [ref=e466]: ★ 5.0
+                - generic [ref=e467]:
+                  - generic [ref=e468]: Documentary
+                  - generic [ref=e469]: Music
+          - listitem [ref=e470]:
+            - link "On the Waterfront On the Waterfront 1954 Rating Crime Drama" [ref=e471] [cursor=pointer]:
+              - /url: /movie/439827540
+              - img "On the Waterfront" [ref=e474]
+              - generic [ref=e475]:
+                - heading "On the Waterfront" [level=3] [ref=e476]:
+                  - generic [ref=e477]: On the Waterfront
+                - generic [ref=e478]:
+                  - generic [ref=e479]: "1954"
+                  - generic "Rating" [ref=e480]: ★ 5.0
+                - generic [ref=e481]:
+                  - generic [ref=e482]: Crime
+                  - generic [ref=e483]: Drama
+        - list [ref=e485]:
+          - listitem:
+            - generic "First Page": ‹‹
+          - listitem:
+            - generic "Previous Page": ‹
+          - listitem [ref=e486]:
+            - link "Page 1" [ref=e487] [cursor=pointer]:
+              - /url: http://localhost:3002/search?movies%5Bpage%5D=1
+              - text: "1"
+          - listitem [ref=e488]:
+            - link "Page 2" [ref=e489] [cursor=pointer]:
+              - /url: http://localhost:3002/search?movies%5Bpage%5D=2
+              - text: "2"
+          - listitem [ref=e490]:
+            - link "Page 3" [ref=e491] [cursor=pointer]:
+              - /url: http://localhost:3002/search?movies%5Bpage%5D=3
+              - text: "3"
+          - listitem [ref=e492]:
+            - link "Page 4" [ref=e493] [cursor=pointer]:
+              - /url: http://localhost:3002/search?movies%5Bpage%5D=4
+              - text: "4"
+          - listitem [ref=e494]:
+            - link "Page 5" [ref=e495] [cursor=pointer]:
+              - /url: http://localhost:3002/search?movies%5Bpage%5D=5
+              - text: "5"
+          - listitem [ref=e496]:
+            - link "Page 6" [ref=e497] [cursor=pointer]:
+              - /url: http://localhost:3002/search?movies%5Bpage%5D=6
+              - text: "6"
+          - listitem [ref=e498]:
+            - link "Page 7" [ref=e499] [cursor=pointer]:
+              - /url: http://localhost:3002/search?movies%5Bpage%5D=7
+              - text: "7"
+          - listitem [ref=e500]:
+            - link "Next Page" [ref=e501] [cursor=pointer]:
+              - /url: http://localhost:3002/search?movies%5Bpage%5D=2
+              - text: ›
+          - listitem [ref=e502]:
+            - link "Last Page, Page 42" [ref=e503] [cursor=pointer]:
+              - /url: http://localhost:3002/search?movies%5Bpage%5D=42
+              - text: ››
+  - contentinfo [ref=e504]:
+    - generic [ref=e505]:
+      - generic [ref=e506]: Algolia playground · public movies dataset · 2026
+      - generic [ref=e507]: InstantSearch · Recommend · Personalization · Rules · NeuralSearch · Agent Studio
+  - button "Open Next.js Dev Tools" [ref=e513] [cursor=pointer]:
+    - img [ref=e514]
