@@ -11,7 +11,8 @@
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
     "provision": "tsx scripts/provision.ts",
-    "seed-events": "tsx scripts/seed-events.ts"
+    "seed-events": "tsx scripts/seed-events.ts",
+    "refresh-images": "tsx scripts/refresh-images.ts"
   },
   "dependencies": {
     "@ai-sdk/react": "^3.0.193",
