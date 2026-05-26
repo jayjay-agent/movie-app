@@ -13,6 +13,7 @@ import { EmptyResults } from "@/components/search/EmptyResults";
 import { FacetSidebar } from "@/components/search/FacetSidebar";
 import { MovieHit, type MovieRecord } from "@/components/search/MovieHit";
 import { SearchToolbar } from "@/components/search/SearchToolbar";
+import { PinnedBanner } from "@/components/rules/PinnedBanner";
 import { indexName, searchClient } from "@/lib/algolia";
 import { getOrCreateUserToken } from "@/lib/userToken";
 
@@ -59,6 +60,7 @@ export function SearchExperience() {
         <FacetSidebar />
         <div className="min-w-0 space-y-6">
           <SearchToolbar />
+          <PinnedBanner />
           <Results />
           <Pagination
             classNames={{

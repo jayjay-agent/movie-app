@@ -7,6 +7,7 @@ import {
   Stats,
 } from "react-instantsearch";
 
+import { NeuralSearchToggle } from "@/components/search/NeuralSearchToggle";
 import { indexName } from "@/lib/algolia";
 
 const SORT_OPTIONS = [
@@ -33,7 +34,7 @@ export function SearchToolbar() {
               "absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground",
           }}
         />
-        <div className="flex items-center gap-3 text-xs tracking-widest text-muted-foreground uppercase">
+        <div className="flex flex-wrap items-center gap-3 text-xs tracking-widest text-muted-foreground uppercase">
           <Stats
             translations={{
               rootElementText({ nbHits, processingTimeMS }) {
@@ -53,6 +54,7 @@ export function SearchToolbar() {
               }}
             />
           </label>
+          <NeuralSearchToggle />
         </div>
       </div>
       <CurrentRefinements
