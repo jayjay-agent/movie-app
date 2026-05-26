@@ -127,3 +127,93 @@
     @apply font-sans;
     }
 }
+
+/* ---------------------------------------------------------------------------
+   @algolia/autocomplete-js — skinned to match shadcn radix-sera tokens.
+   ---------------------------------------------------------------------------*/
+.autocomplete-host .aa-Form {
+    background-color: var(--background);
+    border-color: var(--border);
+    border-radius: 0;
+    box-shadow: none;
+}
+.autocomplete-host .aa-Form:focus-within {
+    border-color: var(--ring);
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--ring) 30%, transparent);
+}
+.autocomplete-host .aa-Input {
+    color: var(--foreground);
+    font-family: var(--font-sans);
+}
+.autocomplete-host .aa-Input::placeholder {
+    color: var(--muted-foreground);
+}
+.autocomplete-host .aa-Panel {
+    background-color: var(--popover);
+    color: var(--popover-foreground);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    margin-top: 0.25rem;
+    box-shadow:
+        0 1px 0 var(--border),
+        0 10px 24px -8px color-mix(in oklab, var(--foreground) 18%, transparent);
+}
+.autocomplete-host .aa-SourceHeader {
+    color: var(--muted-foreground);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 0.5rem 0.75rem 0.25rem;
+}
+.autocomplete-host .aa-Item {
+    border-radius: 0;
+}
+.autocomplete-host .aa-Item[aria-selected="true"] {
+    background-color: var(--muted);
+    color: var(--foreground);
+}
+
+.autocomplete-host .ac-movie {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 0.75rem;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+.autocomplete-host .ac-poster {
+    width: 36px;
+    height: 54px;
+    object-fit: cover;
+    background-color: var(--muted);
+    border: 1px solid var(--border);
+}
+.autocomplete-host .ac-poster-empty {
+    background:
+        repeating-linear-gradient(
+            45deg,
+            var(--muted),
+            var(--muted) 4px,
+            var(--background) 4px,
+            var(--background) 8px
+        );
+}
+.autocomplete-host .ac-movie-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+}
+.autocomplete-host .ac-movie-title {
+    font-weight: 600;
+    font-size: 0.875rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.autocomplete-host .ac-movie-sub {
+    font-size: 0.75rem;
+    color: var(--muted-foreground);
+    letter-spacing: 0.04em;
+}

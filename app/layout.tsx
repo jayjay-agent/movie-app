@@ -2,6 +2,8 @@ import { Geist_Mono, Inter, Oxanium } from "next/font/google";
 
 import "./globals.css";
 import { Providers } from "@/app/providers";
+import { Footer } from "@/components/shell/Footer";
+import { Header } from "@/components/shell/Header";
 import { cn } from "@/lib/utils";
 
 const oxaniumHeading = Oxanium({
@@ -39,8 +41,12 @@ export default function RootLayout({
         oxaniumHeading.variable
       )}
     >
-      <body>
-        <Providers>{children}</Providers>
+      <body className="flex min-h-svh flex-col bg-background">
+        <Providers>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
