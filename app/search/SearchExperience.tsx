@@ -9,6 +9,7 @@ import {
 } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 
+import { AgenticChat } from "@/components/search/AgenticChat";
 import { EmptyResults } from "@/components/search/EmptyResults";
 import { FacetSidebar } from "@/components/search/FacetSidebar";
 import { MovieHit, type MovieRecord } from "@/components/search/MovieHit";
@@ -74,6 +75,8 @@ export function SearchExperience() {
           />
         </div>
       </div>
+
+      <AgenticChat />
     </InstantSearchNext>
   );
 }

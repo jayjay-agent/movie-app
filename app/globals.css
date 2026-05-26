@@ -485,3 +485,332 @@
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+/* ---------------------------------------------------------------------------
+   react-instantsearch <Chat> widget — Agentic InstantSearch skin.
+   Matches shadcn radix-sera tokens (sharp corners, uppercase headings,
+   muted neutrals).
+   ---------------------------------------------------------------------------*/
+
+/* Floating toggle button that opens the chat panel. */
+.ais-ChatToggleButton {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--border);
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    cursor: pointer;
+    box-shadow:
+        0 1px 0 var(--border),
+        0 12px 28px -10px color-mix(in oklab, var(--foreground) 28%, transparent);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.ais-ChatToggleButton:hover {
+    opacity: 0.9;
+}
+.ais-ChatToggleButton:active {
+    transform: translateY(1px);
+}
+.ais-ChatToggleButton--open {
+    opacity: 0.6;
+}
+
+/* Side panel container that slides in from the right. */
+.ais-ChatSidePanelLayout {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: min(440px, 100vw);
+    z-index: 50;
+    background-color: var(--background);
+    border-left: 1px solid var(--border);
+    box-shadow:
+        -1px 0 0 var(--border),
+        -20px 0 40px -20px color-mix(in oklab, var(--foreground) 25%, transparent);
+    display: flex;
+    flex-direction: column;
+}
+.ais-ChatSidePanelLayout--maximized {
+    width: min(720px, 100vw);
+}
+
+/* Header. */
+.ais-ChatHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    background-color: var(--card);
+}
+.ais-ChatHeader-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+.ais-ChatHeader-titleIcon {
+    width: 0.625rem;
+    height: 0.625rem;
+    background-color: var(--primary);
+    border-radius: 9999px;
+}
+.ais-ChatHeader-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+.ais-ChatHeader-clear,
+.ais-ChatHeader-minimize,
+.ais-ChatHeader-maximize,
+.ais-ChatHeader-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+.ais-ChatHeader-clear:hover,
+.ais-ChatHeader-minimize:hover,
+.ais-ChatHeader-maximize:hover,
+.ais-ChatHeader-close:hover {
+    background-color: var(--muted);
+    color: var(--foreground);
+}
+
+/* Messages scroll area. */
+.ais-ChatMessages {
+    flex: 1;
+    min-height: 0;
+    position: relative;
+    overflow: hidden;
+}
+.ais-ChatMessages-scroll {
+    height: 100%;
+    overflow-y: auto;
+    padding: 1.25rem;
+}
+.ais-ChatMessages-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Single message. */
+.ais-ChatMessage-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 90%;
+}
+.ais-ChatMessage--left .ais-ChatMessage-container {
+    align-self: flex-start;
+}
+.ais-ChatMessage:not(.ais-ChatMessage--left) .ais-ChatMessage-container {
+    align-self: flex-end;
+}
+.ais-ChatMessage-content {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    background-color: var(--background);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+.ais-ChatMessage--left .ais-ChatMessage-content {
+    background-color: var(--card);
+}
+.ais-ChatMessage:not(.ais-ChatMessage--left) .ais-ChatMessage-content {
+    background-color: var(--muted);
+}
+.ais-ChatMessage-actions {
+    display: flex;
+    gap: 0.25rem;
+    font-mono: var(--font-mono);
+}
+.ais-ChatMessage-action {
+    width: 1.75rem;
+    height: 1.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--muted-foreground);
+    cursor: pointer;
+}
+.ais-ChatMessage-action:hover {
+    background-color: var(--muted);
+    color: var(--foreground);
+}
+.ais-ChatMessageError {
+    color: var(--destructive);
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.04em;
+}
+
+/* Loader skeleton + spinner. */
+.ais-ChatMessageLoader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px dashed var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+}
+.ais-ChatMessageLoader-spinner {
+    width: 0.875rem;
+    height: 0.875rem;
+    border: 2px solid var(--muted);
+    border-top-color: var(--primary);
+    border-radius: 9999px;
+    animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Greeting (empty state). */
+.ais-ChatGreeting {
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.ais-ChatGreeting-heading {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+.ais-ChatGreeting-subheading {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    line-height: 1.5;
+}
+
+/* Suggestion chips. */
+.ais-ChatPromptSuggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0 1.25rem 0.75rem;
+}
+.ais-ChatPromptSuggestions-suggestion {
+    border: 1px solid var(--border);
+    background-color: var(--background);
+    padding: 0.375rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--foreground);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+.ais-ChatPromptSuggestions-suggestion:hover {
+    background-color: var(--muted);
+}
+
+/* Prompt input. */
+.ais-ChatPrompt {
+    border-top: 1px solid var(--border);
+    background-color: var(--card);
+}
+.ais-ChatPrompt-body {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    padding: 0.875rem 1rem;
+}
+.ais-ChatPrompt-textarea {
+    flex: 1;
+    min-height: 2.5rem;
+    max-height: 8rem;
+    resize: none;
+    border: 1px solid var(--border);
+    background-color: var(--background);
+    color: var(--foreground);
+    padding: 0.625rem 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+.ais-ChatPrompt-textarea::placeholder {
+    color: var(--muted-foreground);
+}
+.ais-ChatPrompt-textarea:focus {
+    outline: none;
+    border-color: var(--ring);
+    box-shadow: 0 0 0 2px color-mix(in oklab, var(--ring) 30%, transparent);
+}
+.ais-ChatPrompt-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+.ais-ChatPrompt-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    border: 1px solid var(--border);
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+.ais-ChatPrompt-submit:hover:not([disabled]) {
+    opacity: 0.85;
+}
+.ais-ChatPrompt-submit[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+.ais-ChatPrompt-disclaimer {
+    padding: 0 1rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+}
+
+/* Overlay variant — full-screen modal. */
+.ais-ChatOverlayLayout {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background-color: color-mix(in oklab, var(--background) 95%, transparent);
+    display: flex;
+    flex-direction: column;
+}
