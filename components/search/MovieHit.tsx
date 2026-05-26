@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Highlight } from "react-instantsearch";
 import type { Hit } from "instantsearch.js";
 
+import { Poster } from "@/components/movie/Poster";
 import { sentClickedMovie } from "@/lib/insights";
 import { cn } from "@/lib/utils";
 
@@ -43,25 +44,13 @@ export function MovieHit({ hit, className }: Props) {
         className
       )}
     >
-      <div className="relative aspect-[2/3] w-full overflow-hidden bg-muted">
-        {hit.image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={hit.image}
-            alt=""
-            loading="lazy"
-            className="size-full object-cover transition-transform duration-300 group-hover/hit:scale-[1.02]"
-          />
-        ) : (
-          <div
-            aria-hidden
-            className="size-full"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(45deg, var(--muted), var(--muted) 6px, var(--background) 6px, var(--background) 12px)",
-            }}
-          />
-        )}
+      <div className="relative aspect-[2/3] w-full">
+        <Poster
+          src={hit.image}
+          alt={hit.title}
+          className="size-full"
+          imgClassName="transition-transform duration-300 group-hover/hit:scale-[1.02]"
+        />
         {promoted ? (
           <span className="absolute top-2 left-2 bg-primary px-2 py-1 font-mono text-[10px] tracking-widest text-primary-foreground uppercase">
             ★ Pinned

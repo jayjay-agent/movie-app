@@ -123,6 +123,13 @@ export function AutocompleteHeader() {
                 const meta = [movie.year, movie.genre?.[0]]
                   .filter(Boolean)
                   .join(" · ");
+                const onImgError = (e: Event) => {
+                  const img = e.currentTarget as HTMLImageElement;
+                  img.style.display = "none";
+                  const fallback = document.createElement("div");
+                  fallback.className = "ac-poster ac-poster-empty";
+                  img.parentElement?.insertBefore(fallback, img);
+                };
                 return html`
                   <a class="ac-movie" href=${`/movie/${movie.objectID}`}>
                     ${movie.image
@@ -131,6 +138,7 @@ export function AutocompleteHeader() {
                           src=${movie.image}
                           alt=""
                           loading="lazy"
+                          onerror=${onImgError}
                         />`
                       : html`<div class="ac-poster ac-poster-empty"></div>`}
                     <div class="ac-movie-meta">

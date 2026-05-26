@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { Poster } from "@/components/movie/Poster";
 import { Button } from "@/components/ui/button";
 import type { RawMovie } from "@/lib/algolia";
 
@@ -18,25 +19,11 @@ export function MovieDetail({ movie }: Props) {
   return (
     <article className="mx-auto grid max-w-[1200px] gap-10 px-6 py-12 lg:grid-cols-[340px_1fr]">
       <div className="space-y-4">
-        <div className="aspect-[2/3] w-full overflow-hidden border border-border bg-muted">
-          {movie.image ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={movie.image}
-              alt={`${movie.title} poster`}
-              className="size-full object-cover"
-            />
-          ) : (
-            <div
-              aria-hidden
-              className="size-full"
-              style={{
-                backgroundImage:
-                  "repeating-linear-gradient(45deg, var(--muted), var(--muted) 8px, var(--background) 8px, var(--background) 16px)",
-              }}
-            />
-          )}
-        </div>
+        <Poster
+          src={movie.image}
+          alt={`${movie.title} poster`}
+          className="aspect-[2/3] w-full border border-border"
+        />
         <div className="flex gap-3">
           <Button asChild variant="outline">
             <Link href="/search">Back to search</Link>

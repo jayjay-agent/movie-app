@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 
+import { Poster } from "@/components/movie/Poster";
 import type { RawMovie } from "@/lib/algolia";
 import { sentClickedMovie } from "@/lib/insights";
 import { cn } from "@/lib/utils";
@@ -34,26 +35,12 @@ export function MoviePosterTile({ item, className }: Props) {
         className
       )}
     >
-      <div className="aspect-[2/3] w-full overflow-hidden border border-border bg-muted">
-        {item.image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={item.image}
-            alt=""
-            loading="lazy"
-            className="size-full object-cover transition-transform duration-300 group-hover/tile:scale-[1.03]"
-          />
-        ) : (
-          <div
-            aria-hidden
-            className="size-full"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(45deg, var(--muted), var(--muted) 6px, var(--background) 6px, var(--background) 12px)",
-            }}
-          />
-        )}
-      </div>
+      <Poster
+        src={item.image}
+        alt={item.title}
+        className="aspect-[2/3] w-full border border-border"
+        imgClassName="transition-transform duration-300 group-hover/tile:scale-[1.03]"
+      />
       <div className="space-y-1">
         <p className="line-clamp-2 font-heading text-xs font-semibold uppercase tracking-wide">
           {item.title}
