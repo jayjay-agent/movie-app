@@ -1,0 +1,62 @@
+[
+  {
+    "objectID": "rule-pin-star-wars-trilogy",
+    "description": "Pin the original Star Wars trilogy when users search 'star wars'",
+    "conditions": [
+      {
+        "pattern": "star wars",
+        "anchoring": "contains",
+        "alternatives": true
+      }
+    ],
+    "consequence": {
+      "promote": [
+        { "objectID": "tt0076759", "position": 0 },
+        { "objectID": "tt0080684", "position": 1 },
+        { "objectID": "tt0086190", "position": 2 }
+      ]
+    },
+    "enabled": true
+  },
+  {
+    "objectID": "rule-banner-oscars",
+    "description": "Show an Academy Awards banner for query 'oscars'",
+    "conditions": [
+      {
+        "pattern": "oscars",
+        "anchoring": "is"
+      }
+    ],
+    "consequence": {
+      "userData": {
+        "banner": {
+          "title": "Academy Award Winners",
+          "subtitle": "Best Picture nominees and winners, hand-curated by Algolia Rules.",
+          "ctaLabel": "Browse all winners",
+          "ctaHref": "/search?movies%5BrefinementList%5D%5Bgenre%5D%5B0%5D=Drama"
+        }
+      }
+    },
+    "enabled": true
+  },
+  {
+    "objectID": "rule-rewrite-scifi",
+    "description": "Rewrite 'scifi' to 'science fiction' so users get the same hits either way",
+    "conditions": [
+      {
+        "pattern": "scifi",
+        "anchoring": "is"
+      }
+    ],
+    "consequence": {
+      "params": {
+        "query": {
+          "edits": [
+            { "type": "replace", "delete": "scifi", "insert": "science fiction" }
+          ]
+        }
+      }
+    },
+    "enabled": true
+  }
+]

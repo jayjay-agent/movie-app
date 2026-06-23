@@ -1,0 +1,40 @@
+{
+  "searchableAttributes": [
+    "title",
+    "alternative_titles",
+    "actors",
+    "genre",
+    "year"
+  ],
+  "attributesForFaceting": [
+    "searchable(genre)",
+    "searchable(actors)",
+    "filterOnly(language)",
+    "year",
+    "rating",
+    "genre.lvl0",
+    "genre.lvl1"
+  ],
+  "customRanking": [
+    "desc(score)",
+    "desc(rating_count)",
+    "desc(rating)"
+  ],
+  "ranking": [
+    "typo",
+    "geo",
+    "words",
+    "filters",
+    "proximity",
+    "attribute",
+    "exact",
+    "custom"
+  ],
+  "replicas": [
+    "movies_year_desc",
+    "movies_rating_desc"
+  ],
+  "maxValuesPerFacet": 100,
+  "attributesToHighlight": ["title", "actors", "genre"],
+  "attributesToSnippet": ["title:20"]
+}
