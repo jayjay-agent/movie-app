@@ -1,5 +1,6 @@
 "use client";
 
+import { Component, type ReactNode, useEffect, useState } from "react";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 
 import { indexName, searchClient } from "@/lib/algolia";
@@ -8,10 +9,23 @@ import { indexName, searchClient } from "@/lib/algolia";
  * Lightweight InstantSearchNext wrapper for Recommend rails that live
  * outside the /search route's search context (homepage, detail page).
  *
- * Uses the same searchClient + indexName so cached queries are deduplicated
- * across rails on the same page.
+ * Recommend queries run client-only: InstantSearchNext otherwise fetches
+ * Recommend results during SSR, and an untrained model makes the Algolia
+ * client retry/throw server-side, hanging the whole page render. Deferring
+ * to mount keeps the page's initial HTML fast and lets RailBoundary catch
+ * any client-side Recommend errors.
  */
 export function RailShell({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <RailEmpty message="Loading recommendations…" />;
+  }
+
   return (
     <InstantSearchNext indexName={indexName} searchClient={searchClient} insights>
       {children}
@@ -54,4 +68,29 @@ export function RailScroller({ children }: { children: React.ReactNode }) {
       {children}
     </ul>
   );
+}
+
+/**
+ * Recommend models may not be trained on a fresh app — the API then errors
+ * with "Index ai_recommend_*:...indice.bin does not exist" instead of
+ * returning empty results. A widget-level `emptyComponent` can't catch that,
+ * so this boundary degrades the rail to a graceful message instead of taking
+ * the whole page down.
+ */
+export class RailBoundary extends Component<
+  { fallback: string; children: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <RailEmpty message={this.props.fallback} />;
+    }
+    return this.props.children;
+  }
 }

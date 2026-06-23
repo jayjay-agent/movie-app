@@ -6,6 +6,7 @@ import { MoviePosterTile } from "@/components/search/MoviePosterTile";
 import type { RawMovie } from "@/lib/algolia";
 
 import {
+  RailBoundary,
   RailEmpty,
   RailHeader,
   RailScroller,
@@ -34,22 +35,24 @@ export function TrendingRail({
         }
       />
       <RailShell>
-        <TrendingItems<RawMovie>
-          limit={limit}
-          facetName={facetName}
-          facetValue={facetValue}
-          itemComponent={({ item }) => (
-            <li className="list-none snap-start">
-              <MoviePosterTile item={item} />
-            </li>
-          )}
-          emptyComponent={() => (
-            <RailEmpty message="Recommendation models still warming up" />
-          )}
-          classNames={{
-            list: "flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 lg:grid lg:grid-cols-6 lg:overflow-visible",
-          }}
-        />
+        <RailBoundary fallback="Recommendation models still warming up">
+          <TrendingItems<RawMovie>
+            limit={limit}
+            facetName={facetName}
+            facetValue={facetValue}
+            itemComponent={({ item }) => (
+              <li className="list-none snap-start">
+                <MoviePosterTile item={item} />
+              </li>
+            )}
+            emptyComponent={() => (
+              <RailEmpty message="Recommendation models still warming up" />
+            )}
+            classNames={{
+              list: "flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 lg:grid lg:grid-cols-6 lg:overflow-visible",
+            }}
+          />
+        </RailBoundary>
       </RailShell>
     </section>
   );
