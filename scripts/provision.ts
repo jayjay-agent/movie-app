@@ -17,7 +17,9 @@
  *   3. Applies data/settings.json (searchable attrs, facets, replicas,
  *      ranking, custom ranking).
  *   4. Pushes data/rules.json (pinned hits, banners, contextual rewrites).
- *   5. Prints a summary with task IDs.
+ *   5. Optionally pushes data/rules.weekend.json when
+ *      ALGOLIA_PROVISION_WEEKEND_RULES=1 (paid plan — optionalFilters).
+ *   6. Prints a summary with task IDs.
  *
  * The matching MCP workflow lives in docs/mcp/provisioning-runbook.md — it
  * walks an AI agent through the same steps via the search_write tool. Both
@@ -90,11 +92,24 @@ async function main() {
 
   console.log(`\n→ Provisioning app=${appId} index=${indexName}\n`);
 
-  const [movies, settings, rules] = await Promise.all([
+  const includeWeekendRules =
+    process.env.ALGOLIA_PROVISION_WEEKEND_RULES === "1" ||
+    process.argv.includes("--with-weekend-rules");
+
+  const [movies, settings, baseRules] = await Promise.all([
     loadMovies(),
     loadJSON<Record<string, unknown>>("settings.json"),
     loadJSON<Rule[]>("rules.json"),
   ]);
+
+  let rules = baseRules;
+  if (includeWeekendRules) {
+    const weekendRules = await loadJSON<Rule[]>("rules.weekend.json");
+    rules = [...baseRules, ...weekendRules];
+    console.log(
+      `• Including ${weekendRules.length} weekend context rule(s) (paid plan)`
+    );
+  }
 
   // Ensure every record has an objectID. Algolia rejects records without one
   // when autoGenerateObjectIDIfNotExist is false (the safer default).

@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { SearchExperience } from "./SearchExperience";
 
 export const metadata = {
@@ -7,5 +9,15 @@ export const metadata = {
 };
 
 export default function SearchPage() {
-  return <SearchExperience />;
+  return (
+    <Suspense
+      fallback={
+        <div className="mx-auto max-w-[1400px] px-6 py-12 font-mono text-xs tracking-widest uppercase text-muted-foreground">
+          Loading search…
+        </div>
+      }
+    >
+      <SearchExperience />
+    </Suspense>
+  );
 }

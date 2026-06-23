@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "rule-weekend-family-boost",
+    "description": "Boost family-friendly genres when weekend context is active",
+    "conditions": [{ "context": "weekend" }],
+    "consequence": {
+      "params": {
+        "optionalFilters": [
+          "genre:Family<score=2>",
+          "genre:Animation<score=1>"
+        ]
+      }
+    },
+    "enabled": true
+  }
+]

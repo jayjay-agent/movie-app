@@ -7,7 +7,9 @@ import {
   Stats,
 } from "react-instantsearch";
 
+import { RuleContextToggle } from "@/components/rules/RuleContextToggle";
 import { NeuralSearchToggle } from "@/components/search/NeuralSearchToggle";
+import { PersonalizationToggle } from "@/components/search/PersonalizationToggle";
 import { indexName } from "@/lib/algolia";
 
 const SORT_OPTIONS = [
@@ -16,7 +18,23 @@ const SORT_OPTIONS = [
   { label: "Top rated", value: `${indexName}_rating_desc` },
 ];
 
-export function SearchToolbar() {
+type Props = {
+  personalizationEnabled: boolean;
+  onPersonalizationChange: (enabled: boolean) => void;
+  userToken: string | null;
+  onResetSession: () => void;
+  weekendContextEnabled: boolean;
+  onWeekendContextChange: (enabled: boolean) => void;
+};
+
+export function SearchToolbar({
+  personalizationEnabled,
+  onPersonalizationChange,
+  userToken,
+  onResetSession,
+  weekendContextEnabled,
+  onWeekendContextChange,
+}: Props) {
   return (
     <div className="flex flex-col gap-4 border-b border-border pb-6">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
@@ -57,6 +75,20 @@ export function SearchToolbar() {
           <NeuralSearchToggle />
         </div>
       </div>
+
+      <div className="flex flex-wrap items-start gap-6 border-t border-border pt-4">
+        <PersonalizationToggle
+          enabled={personalizationEnabled}
+          onEnabledChange={onPersonalizationChange}
+          userToken={userToken}
+          onResetSession={onResetSession}
+        />
+        <RuleContextToggle
+          enabled={weekendContextEnabled}
+          onEnabledChange={onWeekendContextChange}
+        />
+      </div>
+
       <CurrentRefinements
         classNames={{
           root: "flex flex-wrap items-center gap-2 text-[11px] tracking-widest uppercase",

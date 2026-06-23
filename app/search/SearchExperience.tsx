@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   Configure,
@@ -9,13 +10,16 @@ import {
 } from "react-instantsearch";
 import { InstantSearchNext } from "react-instantsearch-nextjs";
 
+import { AppliedRulesDebug } from "@/components/rules/AppliedRulesDebug";
+import { PinnedBanner } from "@/components/rules/PinnedBanner";
 import { AgenticChat } from "@/components/search/AgenticChat";
 import { EmptyResults } from "@/components/search/EmptyResults";
 import { FacetSidebar } from "@/components/search/FacetSidebar";
 import { MovieHit, type MovieRecord } from "@/components/search/MovieHit";
+import { PersonalizationEventLog } from "@/components/search/PersonalizationEventLog";
 import { SearchToolbar } from "@/components/search/SearchToolbar";
-import { PinnedBanner } from "@/components/rules/PinnedBanner";
 import { indexName, searchClient } from "@/lib/algolia";
+import { rotateUserToken } from "@/lib/insights";
 import { getOrCreateUserToken } from "@/lib/userToken";
 
 function Results() {
@@ -35,12 +39,48 @@ function Results() {
   );
 }
 
+type SearchConfigureProps = {
+  personalizationEnabled: boolean;
+  userToken: string | null;
+  weekendContextEnabled: boolean;
+};
+
+function SearchConfigure({
+  personalizationEnabled,
+  userToken,
+  weekendContextEnabled,
+}: SearchConfigureProps) {
+  return (
+    <Configure
+      hitsPerPage={24}
+      clickAnalytics
+      {...(personalizationEnabled && userToken
+        ? {
+            enablePersonalization: true,
+            personalizationImpact: 100,
+            userToken,
+          }
+        : {})}
+      {...(weekendContextEnabled ? { ruleContexts: ["weekend"] } : {})}
+    />
+  );
+}
+
 export function SearchExperience() {
+  const searchParams = useSearchParams();
+  const debug = searchParams.get("debug") === "1";
+
   const [userToken, setUserToken] = useState<string | null>(null);
+  const [personalizationEnabled, setPersonalizationEnabled] = useState(true);
+  const [weekendContextEnabled, setWeekendContextEnabled] = useState(false);
 
   useEffect(() => {
     setUserToken(getOrCreateUserToken());
   }, []);
+
+  function handleResetSession() {
+    setUserToken(rotateUserToken());
+  }
 
   return (
     <InstantSearchNext
@@ -50,17 +90,23 @@ export function SearchExperience() {
       insights
       future={{ preserveSharedStateOnUnmount: true }}
     >
-      <Configure
-        hitsPerPage={24}
-        clickAnalytics
-        enablePersonalization={Boolean(userToken)}
-        {...(userToken ? { userToken } : {})}
+      <SearchConfigure
+        personalizationEnabled={personalizationEnabled}
+        userToken={userToken}
+        weekendContextEnabled={weekendContextEnabled}
       />
 
       <div className="mx-auto grid max-w-[1400px] gap-8 px-6 py-8 lg:grid-cols-[260px_1fr]">
         <FacetSidebar />
         <div className="min-w-0 space-y-6">
-          <SearchToolbar />
+          <SearchToolbar
+            personalizationEnabled={personalizationEnabled}
+            onPersonalizationChange={setPersonalizationEnabled}
+            userToken={userToken}
+            onResetSession={handleResetSession}
+            weekendContextEnabled={weekendContextEnabled}
+            onWeekendContextChange={setWeekendContextEnabled}
+          />
           <PinnedBanner />
           <Results />
           <Pagination
@@ -73,6 +119,8 @@ export function SearchExperience() {
               disabledItem: "opacity-40 pointer-events-none",
             }}
           />
+          <AppliedRulesDebug visible={debug} />
+          <PersonalizationEventLog visible={debug} />
         </div>
       </div>
 
